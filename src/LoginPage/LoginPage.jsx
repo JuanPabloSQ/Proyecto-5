@@ -135,12 +135,12 @@ const LoginPage = () => {
           display: 'flex',
           flexDirection: 'column',
           textAlign: 'center',
-          marginTop: '100px',
+          marginTop: '20px',
           alignItems: 'center',
         }}
       >
         <Paper sx={{ p: 6, minWidth: 560 }} elevation={3}>
-          <img width='256' src='/logo.svg' />
+          <img width='256' src='https://cdn-icons-png.flaticon.com/512/6873/6873284.png' />
           <Box
             sx={{
               display: 'flex',
@@ -154,7 +154,7 @@ const LoginPage = () => {
               id='outlined-basic'
               label='Email'
               variant='outlined'
-              sx={{ mb: 3 }}
+              sx={{ mb: 3, color: 'black' }} 
               fullWidth
               required
               type='text'
@@ -164,6 +164,7 @@ const LoginPage = () => {
               }}
               error={!!emailError}
               helperText={emailError}
+              inputProps={{ style: { color: 'black' } }}
             />
             <TextField
               id='outlined-basic'
@@ -172,7 +173,7 @@ const LoginPage = () => {
               fullWidth
               required
               type={visible ? 'text' : 'password'}
-              sx={{ mb: 3 }}
+              sx={{ mb: 3, color: 'black' }} 
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -184,6 +185,7 @@ const LoginPage = () => {
               }}
               error={!!passwordError}
               helperText={passwordError}
+              inputProps={{ style: { color: 'black' } }}
             />
             <FormControlLabel
               control={<Checkbox />}
@@ -191,6 +193,7 @@ const LoginPage = () => {
               sx={{ mb: 3 }}
               checked={rememberMe}
               onChange={handleRememberMeChange}
+              style={{ color: '#666' }}
             />
             <LoadingButton
               variant='contained'
