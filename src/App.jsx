@@ -14,11 +14,11 @@ function App() {
     <ThemeContextProvider>
       <SnackbarContextProvider>      
         <Routes>
-          <Route path='/home' element={<MainPage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/registre' element={<RegistreUserPage />} />
-          <Route path='/catalogue' element={<CataloguePage />} />
-          <Route path='/shopping' element={<ShoppingCarPage />} />
+          <Route path='/Proyecto-5/home' element={<MainPage />} />
+          <Route path='/Proyecto-5/ingresa' element={<LoginPage />} />
+          <Route path='/Proyecto-5/registrate' element={<RegistreUserPage />} />
+          <Route path='/Proyecto-5/catalogo' element={<CataloguePage />} />
+          <Route path='/Proyecto-5/shopping' element={<ShoppingCarPage />} />
         </Routes>
       </SnackbarContextProvider>
     </ThemeContextProvider>

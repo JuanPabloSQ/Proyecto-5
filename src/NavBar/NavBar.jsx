@@ -8,11 +8,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import RamenDiningIcon from '@mui/icons-material/RamenDining';
+import GrassIcon from '@mui/icons-material/Grass';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Catalogo', 'Conocenos', 'Contáctanos'];
+const pages = ['Home', 'Catalogo', 'Ingresa', 'Registrate'];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -29,7 +29,7 @@ function NavBar() {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <RamenDiningIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <GrassIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -43,8 +43,8 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            <Link to="/Proyecto-4/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              ZUTTO
+            <Link to="/Proyecto-5/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              VERDEVIDA
             </Link>
           </Typography>
 
@@ -78,15 +78,15 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={`/Proyecto-4/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to={`/Proyecto-5/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <MenuItem onClick={handleCloseNavMenu} sx={{ textAlign: 'center' }}>
-                    {page}
+                    {page === 'Catalogo' ? 'Catálogo' : page} 
                   </MenuItem>
                 </Link>
               ))}
             </Menu>
           </Box>
-          <RamenDiningIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <GrassIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -105,9 +105,9 @@ function NavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to={`/Proyecto-4/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
+              <Link to={`/Proyecto-5/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
                 <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-                  {page}
+                  {page === 'Catalogo' ? 'Catálogo' : page} 
                 </Button>
               </Link>
             ))}
@@ -119,4 +119,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
