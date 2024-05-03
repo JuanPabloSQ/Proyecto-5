@@ -1,22 +1,18 @@
-import { lime } from '@mui/material/colors';
-
-const baseTheme = {
-  primary: {
-    main: lime[50],
-  },
-};
-
-const getTheme = (mode) => ({
+const getTheme = () => ({
   palette: {
-    ...baseTheme,
-    mode,
-    ...(mode === 'light'
-      ? {
-          // palette values for light mode
-        }
-      : {
-          // palette values for dark mode
-        }),
+    primary: {
+      main: '#1B5E20', // Verde más oscuro
+    },
+    secondary: {
+      main: '#8BC34A', // Verde claro
+    },
+    background: {
+      default: '#000000', // Fondo negro
+    },
+    text: {
+      primary: '#FFFFFF', // Texto blanco para un buen contraste
+      secondary: '#CCCCCC', // Texto gris claro para el secundario
+    },
   },
 });
 
