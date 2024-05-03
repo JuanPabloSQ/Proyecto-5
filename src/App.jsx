@@ -4,6 +4,9 @@ import LoginPage from './LoginPage/LoginPage';
 import { ThemeContextProvider } from "./Context/ThemeContext";
 import {SnackbarContextProvider} from "../src/Context/SnackBarConext";
 import MainPage from "./MainPage.jsx/MainPage";
+import CataloguePage from './CataloguePage/CataloguePage';
+import RegistreUserPage from './RegistreUserPage/RegistreUserPage';
+import ShoppingCarPage from './ShoppingCarPage/ShoppingCarPage';
 
 function App() {
   return (
@@ -11,8 +14,11 @@ function App() {
     <ThemeContextProvider>
       <SnackbarContextProvider>      
         <Routes>
+          <Route path='/home' element={<MainPage />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/' element={<MainPage />} />
+          <Route path='/registre' element={<RegistreUserPage />} />
+          <Route path='/catalogue' element={<CataloguePage />} />
+          <Route path='/shopping' element={<ShoppingCarPage />} />
         </Routes>
       </SnackbarContextProvider>
     </ThemeContextProvider>

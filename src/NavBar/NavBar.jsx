@@ -12,7 +12,7 @@ import RamenDiningIcon from '@mui/icons-material/RamenDining';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const pages = ['Inicio', 'Menú', 'Conocenos', 'Contáctanos'];
+const pages = ['Home', 'Catalogo', 'Conocenos', 'Contáctanos'];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
