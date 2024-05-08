@@ -51,7 +51,7 @@ function NavBar() {
             noWrap
             component={Link}
             to="/Proyecto-5/"
-            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} // Tamaño de fuente más pequeño
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
           >
             HOME
           </Typography>
@@ -65,9 +65,39 @@ function NavBar() {
             noWrap
             component={Link}
             to="/Proyecto-5/catalogo"
-            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} // Tamaño de fuente más pequeño
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} 
           >
             CATALOGO
+          </Typography>
+          <Box sx={{ width: '20px' }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/Proyecto-5/perfil"
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} 
+          >
+            PERFIL
+          </Typography>
+          <Box sx={{ width: '20px' }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/Proyecto-5/ingresa"
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} 
+          >
+            INICIA SESION
+          </Typography>
+          <Box sx={{ width: '20px' }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/Proyecto-5/crearcuenta"
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} 
+          >
+            CREAR CUENTA
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
@@ -79,7 +109,7 @@ function NavBar() {
         </Toolbar>
       </Container>
 
-      {/* Drawer para el carrito */}
+
       <SwipeableDrawer
         anchor="right"
         open={openCart}

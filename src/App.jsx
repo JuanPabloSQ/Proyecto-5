@@ -7,6 +7,8 @@ import MainPage from "./MainPage.jsx/MainPage";
 import CataloguePage from './CataloguePage/CataloguePage';
 import RegistreUserPage from './RegistreUserPage/RegistreUserPage';
 import ShoppingCarPage from './ShoppingCarPage/ShoppingCarPage';
+import PerfilPage from "./LoginPage/PerfilPage"
+import CreatePage from "./LoginPage/CreatePage"
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path='/Proyecto-5/registrate' element={<RegistreUserPage />} />
           <Route path='/Proyecto-5/catalogo' element={<CataloguePage />} />
           <Route path='/Proyecto-5/shopping' element={<ShoppingCarPage />} />
+          <Route path='/Proyecto-5/perfil' element={<PerfilPage />} />
+          <Route path='/Proyecto-5/crearcuenta' element={<CreatePage />} />
         </Routes>
       </SnackbarContextProvider>
     </ThemeContextProvider>
