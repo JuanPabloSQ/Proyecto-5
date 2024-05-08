@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
+import { useSnackbar } from "../Context/SnackBarConext";
 
 const apiUrl = 'http://localhost:3000';
 
@@ -13,15 +14,15 @@ const CreatePage = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [error, setError] = useState('');
+    const { successSnackbar, errorSnackbar } = useSnackbar(); // Debe estar dentro del componente
 
     const handleCreateUser = async () => {
         if (!email || !password || !confirmPassword) {
-            setError('Por favor complete todos los campos.');
+            errorSnackbar('Por favor complete todos los campos.');
             return;
         }
         if (password !== confirmPassword) {
-            setError('Las contraseñas no coinciden.');
+            errorSnackbar('Las contraseñas no coinciden.');
             return;
         }
         try {
@@ -31,7 +32,7 @@ const CreatePage = () => {
                 admin: false  // Envía siempre false para admin
             });
             console.log('Usuario creado:', response.data);
-            setError('Usuario creado exitosamente.');
+            successSnackbar('Usuario creado exitosamente.');
         } catch (error) {
             console.error('Error al crear usuario:', error);
             let message = 'Error al crear usuario. Por favor verifique la conexión y los datos.';
@@ -40,7 +41,7 @@ const CreatePage = () => {
                     ? error.response.data.errors.map(e => e.msg).join(', ')
                     : error.response.data.message || message;
             }
-            setError(message);
+            errorSnackbar(message);
         }
     };
 
@@ -92,8 +93,8 @@ const CreatePage = () => {
                     autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    inputProps={{ style: { color: 'black' } }}
                     InputProps={{
+                        style: { color: 'black' },
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
@@ -117,8 +118,8 @@ const CreatePage = () => {
                     autoComplete="current-password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    inputProps={{ style: { color: 'black' } }}
                     InputProps={{
+                        style: { color: 'black' },
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
@@ -135,14 +136,11 @@ const CreatePage = () => {
                     type="button"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3,  }}
                     onClick={handleCreateUser}
                 >
                     Crear Usuario
                 </Button>
-                {error && (
-                    <Typography color="error" variant="body2">{error}</Typography>
-                )}
             </Box>
         </>
     );
