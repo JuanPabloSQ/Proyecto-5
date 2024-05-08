@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import GrassIcon from '@mui/icons-material/Grass';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const pages = ['Home', 'Catalogo', 'Ingresa', 'Registrate'];
 
@@ -112,6 +113,10 @@ function NavBar() {
               </Link>
             ))}
           </Box>
+          <Button component={Link} to="/Proyecto-5/carrito" color="inherit" style={{textDecoration: 'none'}}>
+            <ShoppingCartIcon /> 
+            Carrito
+          </Button>
         </Toolbar>
       </Container>
     </AppBar>

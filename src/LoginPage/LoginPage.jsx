@@ -17,6 +17,8 @@ import * as yup from 'yup';
 import { useSnackbar } from "../Context/SnackBarConext"
 import LoadingButton from '@mui/lab/LoadingButton';
 
+const apiUrl = 'http://localhost:3000'; 
+
 const loginSchema = yup.object().shape({
   email: yup
     .string()
@@ -90,7 +92,7 @@ const LoginPage = () => {
       handlePasswordValidation(password);
 
       const response = await axios.post(
-        `${process.env.REACT_APP_TEP_API}/auth/login`,
+        `${apiUrl}/auth/login`, 
         {
           email,
           password,
@@ -105,7 +107,7 @@ const LoginPage = () => {
         localStorage.removeItem('password');
       }
 
-      navigate('/institutions');
+      navigate('/Proyecto-5/home');
     } catch (error) {
       if (error.response && error.response.status === 401) {
         errorSnackbar('Email o contraseña incorrectos');
