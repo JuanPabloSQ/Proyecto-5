@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-function ShoppingCart({ onClose }) { // Agrega onClose como prop
-  const [cartItems, setCartItems] = useState([
+export default function ShoppingCart({ open, onClose }) {
+  const [cartItems, setCartItems] = React.useState([
     { id: 1, name: 'Item 1', price: 10 },
     { id: 2, name: 'Item 2', price: 20 },
     { id: 3, name: 'Item 3', price: 30 }
@@ -20,23 +24,26 @@ function ShoppingCart({ onClose }) { // Agrega onClose como prop
     setCartItems(updatedCart);
   };
 
-  return (
-    <>
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role="presentation">
       <List>
-        {cartItems.map(item => (
-          <React.Fragment key={item.id}>
-            <ListItem>
+        {cartItems.map((item) => (
+          <ListItem key={item.id} disablePadding>
+            <ListItemButton>
               <ListItemText primary={item.name} secondary={`$${item.price}`} />
               <IconButton onClick={() => removeFromCart(item.id)} edge="end" color="inherit">
                 <DeleteIcon />
               </IconButton>
-            </ListItem>
-            <Divider />
-          </React.Fragment>
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
-    </>
+    </Box>
+  );
+
+  return (
+    <Drawer anchor="right" open={open} onClose={onClose}>
+      {DrawerList}
+    </Drawer>
   );
 }
-
-export default ShoppingCart;

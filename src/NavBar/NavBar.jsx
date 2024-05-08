@@ -20,6 +20,10 @@ function NavBar() {
     setOpenCart(!openCart);
   };
 
+  const closeCart = () => {
+    setOpenCart(false);
+  };
+
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -79,10 +83,10 @@ function NavBar() {
       <SwipeableDrawer
         anchor="right"
         open={openCart}
-        onClose={toggleCart}
+        onClose={closeCart} // Cambiamos la función de cierre
         onOpen={() => {}}
       >
-        <ShoppingCart onClose={toggleCart} />
+        <ShoppingCart open={openCart} onClose={closeCart} /> {/* Le pasamos el estado del drawer y la función de cierre */}
       </SwipeableDrawer>
     </AppBar>
   );
