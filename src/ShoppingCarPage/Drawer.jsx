@@ -7,11 +7,20 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
 export default function ShoppingCart({ open, onClose, cartItems, setCartItems }) {
   const removeFromCart = (id) => {
     const updatedCart = cartItems.filter(item => item._id !== id);
     setCartItems(updatedCart);
+  };
+
+  const getTotalPrice = () => {
+    if (cartItems && Array.isArray(cartItems)) {
+      return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
+    return 0;  // Retorna 0 si cartItems no es un arreglo o está vacío
   };
 
   const DrawerList = (
@@ -37,6 +46,10 @@ export default function ShoppingCart({ open, onClose, cartItems, setCartItems })
           </ListItem>
         )}
       </List>
+      <Divider />
+      <Typography variant="h6" align="center" sx={{ my: 2, color: 'black' }}> 
+        Total: ${getTotalPrice().toFixed(2)}
+      </Typography>
     </Box>
   );
 
