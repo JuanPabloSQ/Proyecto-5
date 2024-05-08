@@ -16,18 +16,18 @@ const CardPlant = ({ cardName, cardBody, cardImage, addToCart }) => {
           alt={cardName}
         />
         <CardContent>
-        <Typography variant="h5"  color="black">
+          <Typography variant="h5" color="black">
             {cardName}
           </Typography>
-          <Typography variant="body2"  color="black">
+          <Typography variant="body2" color="black">
             {cardBody}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <Button onClick={addToCart} variant="contained" color="primary">
-        Comprar
-      </Button>
+        <Button onClick={addToCart} variant="contained" color="primary">
+          Comprar
+        </Button>
       </CardActions>
     </Card>
   );
