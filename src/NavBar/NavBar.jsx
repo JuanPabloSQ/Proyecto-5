@@ -1,124 +1,89 @@
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import GrassIcon from '@mui/icons-material/Grass';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import ShoppingCart from '../ShoppingCarPage/Drawer';
+import GrassIcon from '@mui/icons-material/Grass'; // Importa el icono GrassIcon
 
 const pages = ['Home', 'Catalogo', 'Ingresa', 'Registrate'];
 
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [openCart, setOpenCart] = useState(false); // Estado para controlar la apertura del carrito
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const toggleCart = () => {
+    setOpenCart(!openCart);
   };
 
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <GrassIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* Icono GrassIcon */}
+          <GrassIcon sx={{ marginRight: '8px', color: 'white' }} />
+
+          {/* Texto VERDEVIDA */}
           <Typography
             variant="h6"
             noWrap
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+            component={Link}
+            to="/Proyecto-5/"
+            style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <Link to="/Proyecto-5/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              VERDEVIDA
-            </Link>
+            VERDEVIDA
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <Link to={`/Proyecto-5/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <MenuItem onClick={handleCloseNavMenu} sx={{ textAlign: 'center' }}>
-                    {page === 'Catalogo' ? 'Catálogo' : page} 
-                  </MenuItem>
-                </Link>
-              ))}
-            </Menu>
-          </Box>
-          <GrassIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* Espacio */}
+          <Box sx={{ width: '20px' }} />
+
+          {/* Texto HOME */}
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+            component={Link}
+            to="/Proyecto-5/"
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} // Tamaño de fuente más pequeño
           >
-            ZUTTO
+            HOME
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link to={`/Proyecto-5/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
-                <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-                  {page === 'Catalogo' ? 'Catálogo' : page} 
-                </Button>
-              </Link>
-            ))}
-          </Box>
-          <Button component={Link} to="/Proyecto-5/carrito" color="inherit" style={{textDecoration: 'none'}}>
-            <ShoppingCartIcon /> 
-            Carrito
-          </Button>
+
+          {/* Espacio */}
+          <Box sx={{ width: '20px' }} />
+
+          {/* Texto CATALOGO */}
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/Proyecto-5/catalogo"
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }} // Tamaño de fuente más pequeño
+          >
+            CATALOGO
+          </Typography>
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          {/* Botón del carrito */}
+          <IconButton onClick={toggleCart} color="inherit">
+            <ShoppingCartIcon />
+          </IconButton>
         </Toolbar>
       </Container>
+
+      {/* Drawer para el carrito */}
+      <SwipeableDrawer
+        anchor="right"
+        open={openCart}
+        onClose={toggleCart}
+        onOpen={() => {}}
+      >
+        <ShoppingCart onClose={toggleCart} />
+      </SwipeableDrawer>
     </AppBar>
   );
 }
