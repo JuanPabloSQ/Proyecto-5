@@ -5,26 +5,29 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-const CardPlant = ({ cardName, cardBody, cardImage }) => {
+const CardPlant = ({ cardName, cardBody, cardImage, addToCart }) => {
   return (
-    <Card sx={{ width: 200 }}>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
+          height="140"
           image={cardImage}
+          alt={cardName}
         />
-        <CardContent sx={{ height: 60 }} >
-          <Typography variant="body2" color="black">
-            <Typography>
-              {cardName}
-            </Typography>
+        <CardContent>
+        <Typography variant="h5"  color="black">
+            {cardName}
+          </Typography>
+          <Typography variant="body2"  color="black">
             {cardBody}
           </Typography>
         </CardContent>
+      </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Comprar
-        </Button>
+      <Button onClick={addToCart} variant="contained" color="primary">
+        Comprar
+      </Button>
       </CardActions>
     </Card>
   );
