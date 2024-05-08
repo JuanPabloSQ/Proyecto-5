@@ -5,7 +5,7 @@ import { Box, Grid, TextField, InputAdornment, IconButton, Paper, FormControlLab
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useSnackbar } from "../Context/SnackBarConext";
+import { useSnackbar } from "../Context/SnackBarConext"
 import * as yup from 'yup';
 
 const apiUrl = 'http://localhost:3000'; 
@@ -51,6 +51,7 @@ const LoginPage = () => {
       }
       navigate('/Proyecto-5/home');
     } catch (error) {
+      setLoading(false);
       if (error instanceof yup.ValidationError) {
         error.inner.forEach(err => {
           if (err.path === 'email') setEmailError(err.message);
@@ -61,7 +62,6 @@ const LoginPage = () => {
       } else {
         errorSnackbar('Error durante el inicio de sesión');
       }
-      setLoading(false);
     }
   };
 
@@ -72,9 +72,29 @@ const LoginPage = () => {
 
   return (
     <Grid container direction='row' justifyContent='center'>
-      <Grid item lg={4} xs={12} sx={{ display: 'flex', flexDirection: 'column', textAlign: 'center', marginTop: '20px', alignItems: 'center' }}>
+      <Grid
+        item
+        lg={4}
+        xs={12}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          textAlign: 'center',
+          marginTop: '20px',
+          alignItems: 'center',
+        }}
+      >
         <Paper sx={{ p: 6, minWidth: 560 }} elevation={3}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left', mt: 6 }}>
+          <img src='https://cdn-icons-png.flaticon.com/512/6873/6873284.png' alt="Login Icon" width='256' />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'left',
+              mt: 6,
+            }}
+          >
             <TextField
               id='email'
               label='Email'
@@ -86,7 +106,7 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               helperText={emailError}
-              InputProps={{ style: { color: 'black' } }}
+              inputProps={{ style: { color: 'black' } }}
             />
             <TextField
               id='password'
@@ -98,17 +118,17 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               InputProps={{
+                style: { color: 'black' },
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={() => setVisible(!visible)}>
                       {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
                     </IconButton>
                   </InputAdornment>
-                ),
+                )
               }}
               error={!!passwordError}
               helperText={passwordError}
-              InputProps={{ style: { color: 'black' } }}
             />
             <FormControlLabel
               control={<Checkbox checked={rememberMe} onChange={handleRememberMeChange} />}
