@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ShoppingCart from '../ShoppingCarPage/Drawer';
-import GrassIcon from '@mui/icons-material/Grass'; // Importa el icono GrassIcon
+import GrassIcon from '@mui/icons-material/Grass'; 
 
 const pages = ['Home', 'Catalogo', 'Ingresa', 'Registrate'];
 
 function NavBar() {
-  const [openCart, setOpenCart] = useState(false); // Estado para controlar la apertura del carrito
+  const [openCart, setOpenCart] = useState(false); 
 
   const toggleCart = () => {
     setOpenCart(!openCart);
@@ -28,10 +28,10 @@ function NavBar() {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Icono GrassIcon */}
+        
           <GrassIcon sx={{ marginRight: '8px', color: 'white' }} />
 
-          {/* Texto VERDEVIDA */}
+          
           <Typography
             variant="h6"
             noWrap
@@ -42,10 +42,10 @@ function NavBar() {
             VERDEVIDA
           </Typography>
 
-          {/* Espacio */}
+        
           <Box sx={{ width: '20px' }} />
 
-          {/* Texto HOME */}
+         
           <Typography
             variant="h6"
             noWrap
@@ -56,10 +56,10 @@ function NavBar() {
             HOME
           </Typography>
 
-          {/* Espacio */}
+         
           <Box sx={{ width: '20px' }} />
 
-          {/* Texto CATALOGO */}
+        
           <Typography
             variant="h6"
             noWrap
@@ -72,7 +72,7 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* Botón del carrito */}
+          
           <IconButton onClick={toggleCart} color="inherit">
             <ShoppingCartIcon />
           </IconButton>
@@ -83,10 +83,10 @@ function NavBar() {
       <SwipeableDrawer
         anchor="right"
         open={openCart}
-        onClose={closeCart} // Cambiamos la función de cierre
+        onClose={closeCart} 
         onOpen={() => {}}
       >
-        <ShoppingCart open={openCart} onClose={closeCart} /> {/* Le pasamos el estado del drawer y la función de cierre */}
+        <ShoppingCart open={openCart} onClose={closeCart} /> 
       </SwipeableDrawer>
     </AppBar>
   );

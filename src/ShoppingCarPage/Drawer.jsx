@@ -20,7 +20,7 @@ export default function ShoppingCart({ open, onClose, cartItems, setCartItems })
     if (cartItems && Array.isArray(cartItems)) {
       return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
-    return 0;  // Retorna 0 si cartItems no es un arreglo o está vacío
+    return 0;  
   };
 
   const DrawerList = (
