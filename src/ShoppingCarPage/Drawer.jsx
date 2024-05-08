@@ -36,7 +36,7 @@ export default function ShoppingCart({ open, onClose, cartItems, setCartItems })
                 secondaryTypographyProps={{ style: { color: 'black' } }}
               />
               <IconButton onClick={() => removeFromCart(item._id)} edge="end" color="inherit">
-                <DeleteIcon />
+              <DeleteIcon sx={{ color: 'rgba(0, 0, 0, 0.54)' }} />
               </IconButton>
             </ListItemButton>
           </ListItem>
