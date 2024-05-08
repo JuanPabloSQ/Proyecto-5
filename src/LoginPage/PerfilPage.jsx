@@ -7,14 +7,20 @@ const apiUrl = 'http://localhost:3000';
 
 const PerfilPage = () => {
     const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        const userId = localStorage.getItem('userId'); // Recupera el `_id` almacenado como 'userId'
+        const userId = localStorage.getItem('userId'); // Asegúrate de que esté buscando el valor correcto
         const token = localStorage.getItem('token');
-        if (!userId) {
-            console.error('No userId found');
-            return; // Detiene la ejecución si no se encuentra un userId
+        
+        if (!userId || !token) {
+            console.error('No userId or token found');
+            setError('No user ID or token found.');
+            setLoading(false);
+            return;
         }
+    
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/users/${userId}`, {
@@ -23,31 +29,40 @@ const PerfilPage = () => {
                     }
                 });
                 setUserData(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching user data:', error);
+                setError('Failed to fetch user data.');
+                setLoading(false);
             }
         };
-
+    
         fetchUserData();
     }, []);
-
     return (
         <>
             <NavBar />
             <Box sx={{ backgroundColor: '#fff', padding: '20px', borderRadius: '10px', marginTop: '20px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-                {userData ? (
+                {loading ? (
+                    <Typography variant="body2" color="gray">Cargando datos del usuario...</Typography>
+                ) : error ? (
+                    <Typography variant="body2" color="error">{error}</Typography>
+                ) : userData ? (
                     <>
                         <Typography variant="h5" color="black" gutterBottom>
-                            {userData.name} {/* Nombre del usuario */}
+                            {userData.name || 'Usuario sin nombre'} 
                         </Typography>
                         <Typography variant="body1" color="black" gutterBottom>
-                            Correo electrónico: {userData.email} {/* Correo electrónico del usuario */}
+                            Correo electrónico: {userData.email}
                         </Typography>
-                        {/* Agrega más campos según sea necesario */}
+                        <Typography variant="body1" color="black" gutterBottom>
+                            Cuenta de Administrador: {userData.admin ? "Sí" : "No"}
+                        </Typography>
+                      
                     </>
                 ) : (
                     <Typography variant="body2" color="gray">
-                        Cargando datos del usuario...
+                        No se encontraron datos del usuario.
                     </Typography>
                 )}
             </Box>
