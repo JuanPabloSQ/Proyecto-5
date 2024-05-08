@@ -20,7 +20,12 @@ export default function ShoppingCart({ open, onClose, cartItems, setCartItems })
         {cartItems && cartItems.length > 0 ? cartItems.map((item) => (
           <ListItem key={item._id} disablePadding>
             <ListItemButton>
-              <ListItemText primary={item.name} secondary={`$${item.price} x ${item.quantity}`} />
+              <ListItemText 
+                primary={item.name} 
+                secondary={`$${item.price} x ${item.quantity}`} 
+                primaryTypographyProps={{ style: { color: 'black' } }} 
+                secondaryTypographyProps={{ style: { color: 'black' } }}
+              />
               <IconButton onClick={() => removeFromCart(item._id)} edge="end" color="inherit">
                 <DeleteIcon />
               </IconButton>
@@ -28,7 +33,7 @@ export default function ShoppingCart({ open, onClose, cartItems, setCartItems })
           </ListItem>
         )) : (
           <ListItem>
-            <ListItemText primary="No hay productos en el carrito." />
+            <ListItemText primary="No hay productos en el carrito." primaryTypographyProps={{ style: { color: 'black' } }} />
           </ListItem>
         )}
       </List>
