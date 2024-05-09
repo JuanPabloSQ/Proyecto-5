@@ -5,7 +5,7 @@ import { Box, Grid, TextField, InputAdornment, IconButton, Paper, FormControlLab
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useSnackbar } from "../Context/SnackBarConext"
+import { useSnackbar } from "../Context/SnackBarConext";
 import * as yup from 'yup';
 
 const apiUrl = 'http://localhost:3000'; 
@@ -93,6 +93,7 @@ const LoginPage = () => {
               justifyContent: 'center',
               alignItems: 'left',
               mt: 6,
+              gap: 2,  // Aumenta el espaciado entre campos
             }}
           >
             <TextField
@@ -106,7 +107,10 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               helperText={emailError}
-              inputProps={{ style: { color: 'black' } }}
+              sx={{ marginBottom: 1}} 
+              InputProps={{
+                style: { color: 'black' }  
+              }}
             />
             <TextField
               id='password'
@@ -118,14 +122,14 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               InputProps={{
-                style: { color: 'black' },
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={() => setVisible(!visible)}>
                       {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
+                style: { color: 'black' }  // Asegura que el texto sea negro
               }}
               error={!!passwordError}
               helperText={passwordError}
@@ -133,8 +137,7 @@ const LoginPage = () => {
             <FormControlLabel
               control={<Checkbox checked={rememberMe} onChange={handleRememberMeChange} />}
               label='Recordar contraseña'
-              sx={{ mb: 3 }}
-              style={{ color: '#666' }}
+              sx={{ marginTop: 2 }}  // Ajusta el margen superior para mayor espaciado
             />
             <LoadingButton
               variant='contained'
