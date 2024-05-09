@@ -8,6 +8,7 @@ import CataloguePage from './CataloguePage/CataloguePage';
 import RegistreUserPage from './RegistreUserPage/RegistreUserPage';
 import PerfilPage from "./LoginPage/PerfilPage"
 import CreatePage from "./LoginPage/CreatePage"
+import PlantInfoPage from "./CataloguePage/PlantInfoPage";
 import { CartProvider } from "./Context/CartContext"
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path='/Proyecto-5/catalogo' element={<CataloguePage />} />
             <Route path='/Proyecto-5/perfil' element={<PerfilPage />} />
             <Route path='/Proyecto-5/crearcuenta' element={<CreatePage />} />
+            <Route path='/Proyecto-5/info/:plantId' element={<PlantInfoPage />} />
           </Routes>
         </SnackbarContextProvider>
       </CartProvider>
