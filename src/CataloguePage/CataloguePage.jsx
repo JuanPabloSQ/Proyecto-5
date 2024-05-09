@@ -50,6 +50,7 @@ const CataloguePage = () => {
               cardBody={`Precio: ${plant.price}`}
               cardImage={plant.image}
               addToCart={() => addToCart(plant)}
+              plantId={plant._id}
             />
           </div>
         ))}
