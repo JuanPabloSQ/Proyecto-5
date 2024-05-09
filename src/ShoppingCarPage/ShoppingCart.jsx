@@ -24,27 +24,44 @@ export default function ShoppingCart({ onClose}) {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
+  const loadMercadoPagoSDK = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = "https://sdk.mercadopago.com/js/v2";
+      script.type = 'text/javascript';
+      script.onload = () => resolve();
+      script.onerror = () => reject('Error loading MercadoPago SDK');
+      document.head.appendChild(script);
+    });
+  };
+
+
   const handleCheckout = async () => {
     const email = localStorage.getItem('email');
     if (!email) {
       console.error('User is not logged in or email is not available');
       alert('Por favor, inicia sesión para continuar con la compra.');
-      return; 
+      return;
     }
   
-    console.log("Creating preference for:", cartItems);
-    const preferenceId = await createPreference(cartItems, { email });
-    console.log("Preference ID:", preferenceId);
-    
-    const mp = new window.MercadoPago('TEST-81ce8b94-a7c9-44b6-8951-afc10bf5ac15', {
-      locale: 'es-AR'
-    });
+    try {
+      await loadMercadoPagoSDK();
+      console.log("Creating preference for:", cartItems);
+      const preferenceId = await createPreference(cartItems, { email });
+      console.log("Preference ID:", preferenceId);
   
-    mp.checkout({
-      preference: {
-        id: preferenceId
-      }
-    });
+      const mp = new window.MercadoPago('TEST-81ce8b94-a7c9-44b6-8951-afc10bf5ac15', {
+        locale: 'es-CL'
+      });
+  
+      mp.checkout({
+        preference: {
+          id: preferenceId
+        }
+      });
+    } catch (error) {
+      console.error('Failed to load MercadoPago SDK', error);
+    }
   };
   
 
