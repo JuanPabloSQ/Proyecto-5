@@ -9,7 +9,7 @@ import { useSnackbar } from "../Context/SnackBarConext";
 const apiUrl = 'http://localhost:3000';
 
 const CreatePage = () => {
-    const [name, setName] = useState(''); // Cambiado de username a name
+    const [name, setName] = useState(''); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
