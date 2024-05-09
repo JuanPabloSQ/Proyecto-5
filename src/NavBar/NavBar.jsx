@@ -10,7 +10,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ShoppingCart from "../ShoppingCarPage/ShoppingCart";
 import GrassIcon from '@mui/icons-material/Grass'; 
-import { useCart } from "../Context/CartContext";
 
 function NavBar() {
   const [openCart, setOpenCart] = useState(false);
@@ -81,9 +80,14 @@ function NavBar() {
           <IconButton onClick={toggleCart} color="inherit">
             <ShoppingCartIcon />
           </IconButton>
-        </Toolbar>
+          </Toolbar>
       </Container>
-      <SwipeableDrawer anchor="right" open={openCart} onClose={() => setOpenCart(false)}>
+      <SwipeableDrawer
+        anchor="right"
+        open={openCart}
+        onClose={() => setOpenCart(false)}
+        onOpen={() => setOpenCart(true)}
+      >
         <ShoppingCart onClose={() => setOpenCart(false)} />
       </SwipeableDrawer>
     </AppBar>

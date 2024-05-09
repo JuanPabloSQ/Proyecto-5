@@ -9,9 +9,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { useCart } from "../Context/CartContext";
+import { useMercadoPago } from "../Context/MercadopagoContext";
 
-export default function ShoppingCart({ onClose }) {
+export default function ShoppingCart({ onClose}) {
   const { cartItems, setCartItems } = useCart();
+  const { createPreference } = useMercadoPago();
 
   const removeFromCart = (id) => {
     const updatedCart = cartItems.filter(item => item._id !== id);
@@ -21,6 +23,30 @@ export default function ShoppingCart({ onClose }) {
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
+
+  const handleCheckout = async () => {
+    const email = localStorage.getItem('email');
+    if (!email) {
+      console.error('User is not logged in or email is not available');
+      alert('Por favor, inicia sesión para continuar con la compra.');
+      return; 
+    }
+  
+    console.log("Creating preference for:", cartItems);
+    const preferenceId = await createPreference(cartItems, { email });
+    console.log("Preference ID:", preferenceId);
+    
+    const mp = new window.MercadoPago('TEST-81ce8b94-a7c9-44b6-8951-afc10bf5ac15', {
+      locale: 'es-AR'
+    });
+  
+    mp.checkout({
+      preference: {
+        id: preferenceId
+      }
+    });
+  };
+  
 
   return (
     <Box sx={{ width: 250 }} role="presentation">
@@ -47,6 +73,11 @@ export default function ShoppingCart({ onClose }) {
       <Typography variant="h6" align="center" sx={{ my: 2, color: 'darkslategray' }}>
         Total: ${getTotalPrice().toFixed(2)}
       </Typography>
+      { cartItems.length > 0 && (
+        <button onClick={handleCheckout} style={{ width: '100%', padding: '10px', marginTop: '20px', backgroundColor: 'green', color: 'black', border: 'none', cursor: 'pointer' }}>
+          Pagar con MercadoPago
+        </button>
+      )}
     </Box>
   );
 }
