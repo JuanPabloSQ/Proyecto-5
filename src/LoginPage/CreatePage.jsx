@@ -9,15 +9,16 @@ import { useSnackbar } from "../Context/SnackBarConext";
 const apiUrl = 'http://localhost:3000';
 
 const CreatePage = () => {
+    const [name, setName] = useState(''); // Cambiado de username a name
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { successSnackbar, errorSnackbar } = useSnackbar(); // Debe estar dentro del componente
+    const { successSnackbar, errorSnackbar } = useSnackbar();
 
     const handleCreateUser = async () => {
-        if (!email || !password || !confirmPassword) {
+        if (!name || !email || !password || !confirmPassword) {
             errorSnackbar('Por favor complete todos los campos.');
             return;
         }
@@ -27,9 +28,10 @@ const CreatePage = () => {
         }
         try {
             const response = await axios.post(`${apiUrl}/users/`, {
+                name,
                 email,
                 password,
-                admin: false  // Envía siempre false para admin
+                admin: false
             });
             console.log('Usuario creado:', response.data);
             successSnackbar('Usuario creado exitosamente.');
@@ -73,11 +75,23 @@ const CreatePage = () => {
                     margin="normal"
                     required
                     fullWidth
+                    id="name"
+                    label="Nombre"
+                    name="name"
+                    autoComplete="name"
+                    autoFocus
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    inputProps={{ style: { color: 'black' } }}
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
                     id="email"
                     label="Correo Electrónico"
                     name="email"
                     autoComplete="email"
-                    autoFocus
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     inputProps={{ style: { color: 'black' } }}
@@ -136,7 +150,7 @@ const CreatePage = () => {
                     type="button"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3,  }}
+                    sx={{ mt: 3 }}
                     onClick={handleCreateUser}
                 >
                     Crear Usuario
