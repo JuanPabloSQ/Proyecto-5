@@ -36,7 +36,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component={Link}
-            to="/Proyecto-5/"
+            to="/Proyecto-5/home"
             style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
           >
             HOME
