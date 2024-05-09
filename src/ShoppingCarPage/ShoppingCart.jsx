@@ -49,7 +49,7 @@ export default function ShoppingCart({ onClose}) {
       console.log("Creating preference for:", cartItems);
       const preferenceId = await createPreference(cartItems, { email });
       console.log("Preference ID:", preferenceId);
-  
+    
       const mp = new window.MercadoPago('TEST-81ce8b94-a7c9-44b6-8951-afc10bf5ac15', {
         locale: 'es-CL'
       });
@@ -57,13 +57,13 @@ export default function ShoppingCart({ onClose}) {
       mp.checkout({
         preference: {
           id: preferenceId
-        }
+        },
+        autoOpen: true
       });
     } catch (error) {
       console.error('Failed to load MercadoPago SDK', error);
     }
   };
-  
 
   return (
     <Box sx={{ width: 250 }} role="presentation">
