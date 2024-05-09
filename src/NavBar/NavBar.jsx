@@ -8,37 +8,23 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import ShoppingCart from '../ShoppingCarPage/Drawer';
+import ShoppingCart from "../ShoppingCarPage/ShoppingCart";
 import GrassIcon from '@mui/icons-material/Grass'; 
-
-const pages = ['Home', 'Catalogo', 'Ingresa', 'Registrate'];
+import { useCart } from "../Context/CartContext";
 
 function NavBar() {
-  const [openCart, setOpenCart] = useState(false); 
+  const [openCart, setOpenCart] = useState(false);
 
   const toggleCart = () => {
     setOpenCart(!openCart);
-  };
-
-  const closeCart = () => {
-    setOpenCart(false);
   };
 
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        
           <GrassIcon sx={{ marginRight: '8px', color: 'white' }} />
-
-          
-          <Typography
-            variant="h6"
-            noWrap
-            component={Link}
-            to="/Proyecto-5/"
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
+          <Typography variant="h6" noWrap component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             VERDEVIDA
           </Typography>
 
@@ -108,15 +94,8 @@ function NavBar() {
           </IconButton>
         </Toolbar>
       </Container>
-
-
-      <SwipeableDrawer
-        anchor="right"
-        open={openCart}
-        onClose={closeCart} 
-        onOpen={() => {}}
-      >
-        <ShoppingCart open={openCart} onClose={closeCart} /> 
+      <SwipeableDrawer anchor="right" open={openCart} onClose={() => setOpenCart(false)}>
+        <ShoppingCart onClose={() => setOpenCart(false)} />
       </SwipeableDrawer>
     </AppBar>
   );

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CardPlant from "./CardPlant";
 import NavBar from "../NavBar/NavBar";
-import ShoppingCart from "../ShoppingCarPage/Drawer";
+import { useCart } from "../Context/CartContext"
 
 const CataloguePage = () => {
   const [plants, setPlants] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, setCartItems } = useCart();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -54,8 +54,6 @@ const CataloguePage = () => {
           </div>
         ))}
       </div>
-      <ShoppingCart open={drawerOpen} onClose={toggleDrawer(false)} cartItems={cartItems} setCartItems={setCartItems} />
-
     </div>
   );
 };
