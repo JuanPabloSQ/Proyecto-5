@@ -26,12 +26,8 @@ function NavBar() {
           <GrassIcon sx={{ marginRight: '8px', color: 'white' }} />
           <Typography variant="h6" noWrap component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             VERDEVIDA
-          </Typography>
-
-        
-          <Box sx={{ width: '20px' }} />
-
-         
+          </Typography>       
+          <Box sx={{ width: '20px' }} />        
           <Typography
             variant="h6"
             noWrap
@@ -41,11 +37,7 @@ function NavBar() {
           >
             HOME
           </Typography>
-
-         
           <Box sx={{ width: '20px' }} />
-
-        
           <Typography
             variant="h6"
             noWrap
@@ -85,10 +77,7 @@ function NavBar() {
           >
             CREAR CUENTA
           </Typography>
-
           <Box sx={{ flexGrow: 1 }} />
-
-          
           <IconButton onClick={toggleCart} color="inherit">
             <ShoppingCartIcon />
           </IconButton>
