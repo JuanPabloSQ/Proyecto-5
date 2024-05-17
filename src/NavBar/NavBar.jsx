@@ -61,17 +61,29 @@ function NavBar() {
             CATALOGO
           </Typography>
           <Box sx={{ width: '20px' }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component={Link}
-            to="/Proyecto-5/perfil"
-            style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
-          >
-            PERFIL
-          </Typography>
-          <Box sx={{ width: '20px' }} />
-          {!isAuthenticated ? (
+          {isAuthenticated && (
+            <>
+              <Typography
+                variant="h6"
+                noWrap
+                component={Link}
+                to="/Proyecto-5/perfil"
+                style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
+              >
+                PERFIL
+              </Typography>
+              <Box sx={{ width: '20px' }} />
+              <Typography
+                variant="h6"
+                noWrap
+                onClick={handleLogout}
+                style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem', cursor: 'pointer' }}
+              >
+                CERRAR SESION
+              </Typography>
+            </>
+          )}
+          {!isAuthenticated && (
             <>
               <Typography
                 variant="h6"
@@ -93,15 +105,6 @@ function NavBar() {
                 CREAR CUENTA
               </Typography>
             </>
-          ) : (
-            <Typography
-              variant="h6"
-              noWrap
-              onClick={handleLogout}
-              style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem', cursor: 'pointer' }}
-            >
-              CERRAR SESION
-            </Typography>
           )}
           <Box sx={{ flexGrow: 1 }} />
           <IconButton onClick={toggleCart} color="inherit">
