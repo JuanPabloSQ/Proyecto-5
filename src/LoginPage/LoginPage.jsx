@@ -8,7 +8,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useSnackbar } from "../Context/SnackBarConext";
 import * as yup from 'yup';
 
-const apiUrl = 'http://localhost:3000'; 
+const apiUrl = 'http://localhost:3000';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
@@ -50,6 +50,7 @@ const LoginPage = () => {
         localStorage.removeItem('password');
       }
       navigate('/Proyecto-5/home');
+      window.location.reload();  // Recargar para actualizar el estado de autenticación en el NavBar
     } catch (error) {
       setLoading(false);
       if (error instanceof yup.ValidationError) {
@@ -93,7 +94,7 @@ const LoginPage = () => {
               justifyContent: 'center',
               alignItems: 'left',
               mt: 6,
-              gap: 2,  
+              gap: 2,
             }}
           >
             <TextField
@@ -107,9 +108,9 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               helperText={emailError}
-              sx={{ marginBottom: 1}} 
+              sx={{ marginBottom: 1 }}
               InputProps={{
-                style: { color: 'black' }  
+                style: { color: 'black' }
               }}
             />
             <TextField
@@ -129,7 +130,7 @@ const LoginPage = () => {
                     </IconButton>
                   </InputAdornment>
                 ),
-                style: { color: 'black' } 
+                style: { color: 'black' }
               }}
               error={!!passwordError}
               helperText={passwordError}
@@ -137,7 +138,7 @@ const LoginPage = () => {
             <FormControlLabel
               control={<Checkbox checked={rememberMe} onChange={handleRememberMeChange} />}
               label='Recordar contraseña'
-              sx={{ marginTop: 2, color: 'black' }} 
+              sx={{ marginTop: 2, color: 'black' }}
             />
             <LoadingButton
               variant='contained'
