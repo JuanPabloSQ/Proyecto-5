@@ -93,7 +93,7 @@ const LoginPage = () => {
               justifyContent: 'center',
               alignItems: 'left',
               mt: 6,
-              gap: 2,  // Aumenta el espaciado entre campos
+              gap: 2,  
             }}
           >
             <TextField
@@ -129,7 +129,7 @@ const LoginPage = () => {
                     </IconButton>
                   </InputAdornment>
                 ),
-                style: { color: 'black' }  // Asegura que el texto sea negro
+                style: { color: 'black' } 
               }}
               error={!!passwordError}
               helperText={passwordError}
@@ -137,7 +137,7 @@ const LoginPage = () => {
             <FormControlLabel
               control={<Checkbox checked={rememberMe} onChange={handleRememberMeChange} />}
               label='Recordar contraseña'
-              sx={{ marginTop: 2 }}  // Ajusta el margen superior para mayor espaciado
+              sx={{ marginTop: 2, color: 'black' }} 
             />
             <LoadingButton
               variant='contained'

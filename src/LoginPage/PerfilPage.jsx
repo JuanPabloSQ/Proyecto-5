@@ -11,7 +11,7 @@ const PerfilPage = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const userId = localStorage.getItem('userId'); // Asegúrate de que esté buscando el valor correcto
+        const userId = localStorage.getItem('userId'); 
         const token = localStorage.getItem('token');
         
         if (!userId || !token) {
