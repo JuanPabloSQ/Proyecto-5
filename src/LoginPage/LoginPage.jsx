@@ -50,7 +50,7 @@ const LoginPage = () => {
         localStorage.removeItem('password');
       }
       navigate('/Proyecto-5/home');
-      window.location.reload();  // Recargar para actualizar el estado de autenticación en el NavBar
+      window.location.reload();  
     } catch (error) {
       setLoading(false);
       if (error instanceof yup.ValidationError) {
