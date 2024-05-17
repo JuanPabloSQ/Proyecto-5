@@ -91,7 +91,7 @@ export default function ShoppingCart({ onClose}) {
         Total: ${getTotalPrice().toFixed(2)}
       </Typography>
       { cartItems.length > 0 && (
-        <button onClick={handleCheckout} style={{ width: '100%', padding: '10px', marginTop: '20px', backgroundColor: 'green', color: 'black', border: 'none', cursor: 'pointer' }}>
+        <button onClick={handleCheckout} style={{ width: '80%', padding: '10px', marginTop: '20px', marginLeft: "20px", backgroundColor: 'green', color: 'black', border: 'none', cursor: 'pointer' }}>
           Pagar con MercadoPago
         </button>
       )}
