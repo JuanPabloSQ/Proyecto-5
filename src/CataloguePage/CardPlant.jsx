@@ -10,7 +10,7 @@ const CardPlant = ({ cardName, cardBody, cardImage, addToCart, plantId }) => {
   const navigate = useNavigate();
 
   const goToPlantInfo = () => {
-    navigate(`/Proyecto-5/info/${plantId}`);
+    navigate(`/info/${plantId}`);
   };
 
   return (

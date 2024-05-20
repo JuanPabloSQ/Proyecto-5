@@ -49,7 +49,7 @@ const LoginPage = () => {
         localStorage.removeItem('email');
         localStorage.removeItem('password');
       }
-      navigate('/Proyecto-5/home');
+      navigate('/');
       window.location.reload();  
     } catch (error) {
       setLoading(false);

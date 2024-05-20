@@ -29,7 +29,7 @@ function NavBar() {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     setIsAuthenticated(false);
-    navigate('/Proyecto-5/home');
+    navigate('/');
   };
 
   return (
@@ -45,7 +45,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component={Link}
-            to="/Proyecto-5/home"
+            to="/"
             style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
           >
             HOME
@@ -55,7 +55,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component={Link}
-            to="/Proyecto-5/catalogo"
+            to="/catalogo"
             style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
           >
             CATALOGO
@@ -67,7 +67,7 @@ function NavBar() {
                 variant="h6"
                 noWrap
                 component={Link}
-                to="/Proyecto-5/perfil"
+                to="/perfil"
                 style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
               >
                 PERFIL
@@ -89,7 +89,7 @@ function NavBar() {
                 variant="h6"
                 noWrap
                 component={Link}
-                to="/Proyecto-5/ingresa"
+                to="/ingresa"
                 style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
               >
                 INICIA SESION
@@ -99,7 +99,7 @@ function NavBar() {
                 variant="h6"
                 noWrap
                 component={Link}
-                to="/Proyecto-5/crearcuenta"
+                to="/crearcuenta"
                 style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem' }}
               >
                 CREAR CUENTA
