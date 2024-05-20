@@ -20,7 +20,7 @@ function App() {
         <CartProvider>
           <SnackbarContextProvider>      
             <Routes>
-              <Route path='/Proyecto-5/' element={<MainPage />} />
+              <Route path='/Proyecto-5/*' element={<MainPage />} />
               <Route path='/Proyecto-5/home' element={<MainPage />} />
               <Route path='/Proyecto-5/ingresa' element={<LoginPage />} />
               <Route path='/Proyecto-5/catalogo' element={<CataloguePage />} />
