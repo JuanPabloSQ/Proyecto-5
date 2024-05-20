@@ -8,7 +8,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useSnackbar } from "../Context/SnackBarConext";
 import * as yup from 'yup';
 
-const apiUrl = 'https://proyecto-5-service.vercel.app/';
+const apiUrl = 'https://proyecto-5-service.vercel.app';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
