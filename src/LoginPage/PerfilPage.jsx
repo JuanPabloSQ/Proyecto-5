@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Box, Typography } from '@mui/material';
 import NavBar from "../NavBar/NavBar";
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://proyecto-5-service.vercel.app/';
 
 const PerfilPage = () => {
     const [userData, setUserData] = useState(null);

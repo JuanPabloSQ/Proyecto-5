@@ -10,7 +10,7 @@ export function useMercadoPago() {
 export const MercadoPagoProvider = ({ children }) => {
   const createPreference = async (items, payer) => {
     try {
-      const { data } = await axios.post('http://localhost:3000/mercadopago', {
+      const { data } = await axios.post('https://proyecto-5-service.vercel.app/mercadopago', {
         items: items.map(item => ({
           title: item.name,
           quantity: item.quantity,

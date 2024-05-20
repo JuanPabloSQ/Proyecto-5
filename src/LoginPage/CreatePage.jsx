@@ -6,7 +6,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
 import { useSnackbar } from "../Context/SnackBarConext";
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://proyecto-5-service.vercel.app/';
 
 const CreatePage = () => {
     const [name, setName] = useState(''); 

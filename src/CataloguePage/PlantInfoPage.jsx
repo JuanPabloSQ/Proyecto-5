@@ -14,7 +14,7 @@ const PlantInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/plants/${plantId}`);
+                const response = await fetch(`https://proyecto-5-service.vercel.app/plants/${plantId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
