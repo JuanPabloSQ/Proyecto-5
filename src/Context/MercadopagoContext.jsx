@@ -14,7 +14,7 @@ export const MercadoPagoProvider = ({ children }) => {
         items: items.map(item => ({
           title: item.name,
           quantity: item.quantity,
-          currency_id: "USD",
+          currency_id: "CLP",
           unit_price: item.price
         })),
         payer: {
