@@ -35,6 +35,7 @@ const CreatePage = () => {
             });
             console.log('Usuario creado:', response.data);
             successSnackbar('Usuario creado exitosamente.');
+            window.location.href = '/Proyecto-5/home'; 
         } catch (error) {
             console.error('Error al crear usuario:', error);
             let message = 'Error al crear usuario. Por favor verifique la conexión y los datos.';
