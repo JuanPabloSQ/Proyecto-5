@@ -23,7 +23,7 @@ export default function BasicCard() {
         </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
-        <Link to="/Proyecto-5/catalogo" style={{ textDecoration: 'none' }}>
+        <Link to="/catalogo" style={{ textDecoration: 'none' }}>
           <Button variant="contained">Revisa nuestro catalogo</Button>
         </Link>
       </CardActions>
