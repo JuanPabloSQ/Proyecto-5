@@ -12,7 +12,7 @@ const CataloguePage = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/plants');
+        const response = await axios.get('https://proyecto-5-service.vercel.app/plants');
         setPlants(response.data.data);
       } catch (error) {
         console.error('Error fetching plants:', error);
