@@ -9,11 +9,11 @@ La página web que se presenta es sobre una eCommerce de plantas, se utilizo Vit
 
 - **Clonar el repositorio**
     ```bash
-    git clone https://github.com/JuanPabloSQ/Proyecto-5
+    git clone https://github.com/JuanPabloSQ/ecommerce-service
     ```
 
 
-- **Entrar a la carpeta Proyecto-5 y ejecutar el archivo index.html**
+- **Entrar a la carpeta ecommerce-service y ejecutar el archivo index.html**
 
 
 ## Tecnologias utilizadas
@@ -21,4 +21,4 @@ La página web que se presenta es sobre una eCommerce de plantas, se utilizo Vit
 - Esta página web fue creada utilizando HTML5, JavaScript, CSS, Node.js, Vite + React, junto con las librerías Yup, Material UI, JWT, React Router.
 
 ## Enlace a páginas GitHub
-https://juanpablosq.github.io/Proyecto-5/
+https://juanpablosq.github.io/ecommerce-service/
